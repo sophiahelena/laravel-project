@@ -12,5 +12,29 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   // return view('welcome');
+    return 'welcome home';
+});
+
+Route::get('/users', function(){
+    return 'Show users';
+});
+
+Route::get('/users/{id}', function($id){
+    return "Show user: {$id}";
+})->where('id', '[0-0]+');
+
+Route::get('/users/new', function(){
+    return "Create new user";
+});
+
+Route::get('/greeting/{name}/{nickname?}', function($name, $nickname=null){
+    if($nickname){
+        return "Welcome {$name}, your nickname is {$nickname}";
+    } else{
+        return "Welcome {$name}, you do not have a nickname";
+    }
+
+
+
 });
